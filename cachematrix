@@ -1,0 +1,48 @@
+## Put comments here that give an overall description of what your
+## functions do
+
+## Write a short comment describing this function
+
+makeCacheMatrix <- function(x = matrix()) {
+## accepts a presumably invertible matrix
+## produces a list containing the following 4 functions:
+## 1. designates the matrix 2. fetches it 3. designates the inverse 4. prints it 
+	rev <- NULL
+	desig <- function (y){
+		x <<- y
+		rev <<- NULL
+	}
+
+	fetch <- function() x
+	desigrev <- function(inverse) rev <<- inverse
+	fetchrev <- function() rev
+	list(desig=desig, fetch=fetch, desigrev=desigrev, fetchrev=fetchrev)
+
+## the list that is produced as a result of makeCacheMatrix is then fed into
+## cacheSolve
+}
+
+
+## Write a short comment describing this function
+
+cacheSolve <- function(x, ...) {
+        ## Return a matrix that is the inverse of 'x'
+	rev = x$fetchrev()
+	if(!is.null(rev)){
+		## if an inverse already exists, then it's produced
+		## if not, the reverse is calculated and then spat out by
+		## the 'return(rev)' portion
+		message("it's happening")
+		return(rev)
+	}
+	##the magic happens via 'thestuff'
+	thestuff = x$fetch()
+	rev = solve(thestuff, ...)
+	x$desigrev(rev)
+	return(rev)
+
+##the reverse values are produced, restoring peace and prosperity
+}
+
+##a lot (I REPEAT, A LOT) of credit goes to the generosity of the internet, the forum,
+##and the R programming textbook
