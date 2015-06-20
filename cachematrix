@@ -27,7 +27,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-	rev = x$fetchrev()
+	rev <- x$fetchrev()
 	if(!is.null(rev)){
 		## if an inverse already exists, then it's produced
 		## if not, the reverse is calculated and then spat out by
@@ -36,8 +36,8 @@ cacheSolve <- function(x, ...) {
 		return(rev)
 	}
 	##the magic happens via 'thestuff'
-	thestuff = x$fetch()
-	rev = solve(thestuff, ...)
+	thestuff <- x$fetch()
+	rev <- solve(thestuff, ...)
 	x$desigrev(rev)
 	return(rev)
 
